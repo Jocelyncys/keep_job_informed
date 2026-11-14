@@ -8,7 +8,6 @@ import { InterviewPrep } from './components/InterviewPrep';
 import { PlatformSyncModal } from './components/PlatformSyncModal';
 import { ApplicationModal } from './components/ApplicationModal';
 import { FollowUpModal } from './components/FollowUpModal';
-import { CloudRunDeployModal } from './components/CloudRunDeployModal';
 
 export const App: React.FC = () => {
   // Local storage persistence
@@ -26,7 +25,6 @@ export const App: React.FC = () => {
   const [selectedApp, setSelectedApp] = useState<JobApplication | null>(null);
   const [followUpApp, setFollowUpApp] = useState<JobApplication | null>(null);
   const [targetedAppId, setTargetedAppId] = useState<string | undefined>(undefined);
-  const [showDeployGuide, setShowDeployGuide] = useState(false);
 
   // Sync to local storage
   useEffect(() => {
@@ -88,7 +86,6 @@ export const App: React.FC = () => {
         activeTab={activeTab}
         setActiveTab={setActiveTab}
         onNewApplication={handleAddNewApplication}
-        onOpenDeployGuide={() => setShowDeployGuide(true)}
         profile={profile}
         staleCount={staleCount}
       />
@@ -181,12 +178,6 @@ export const App: React.FC = () => {
         <FollowUpModal
           application={followUpApp}
           onClose={() => setFollowUpApp(null)}
-        />
-      )}
-
-      {showDeployGuide && (
-        <CloudRunDeployModal
-          onClose={() => setShowDeployGuide(false)}
         />
       )}
 

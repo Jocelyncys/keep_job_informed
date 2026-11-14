@@ -1,12 +1,11 @@
 import React from 'react';
-import { Briefcase, FileText, Sparkles, RefreshCw, Rocket, Plus, ExternalLink } from 'lucide-react';
+import { Briefcase, FileText, Sparkles, RefreshCw, Plus } from 'lucide-react';
 import { CandidateProfile } from '../types';
 
 interface NavbarProps {
   activeTab: 'pipeline' | 'cv' | 'interview' | 'sync';
   setActiveTab: (tab: 'pipeline' | 'cv' | 'interview' | 'sync') => void;
   onNewApplication: () => void;
-  onOpenDeployGuide: () => void;
   profile: CandidateProfile;
   staleCount: number;
 }
@@ -15,7 +14,6 @@ export const Navbar: React.FC<NavbarProps> = ({
   activeTab,
   setActiveTab,
   onNewApplication,
-  onOpenDeployGuide,
   profile,
   staleCount
 }) => {
@@ -98,15 +96,6 @@ export const Navbar: React.FC<NavbarProps> = ({
 
           {/* Action Buttons */}
           <div className="flex items-center gap-2 sm:gap-3">
-            <button
-              onClick={onOpenDeployGuide}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-emerald-300 text-emerald-700 hover:bg-emerald-50 text-xs font-semibold transition-all shadow-sm"
-              title="Learn how to deploy this page live"
-            >
-              <Rocket className="w-3.5 h-3.5 text-emerald-600" />
-              <span className="hidden sm:inline">Deploy Live</span>
-            </button>
-
             <button
               onClick={onNewApplication}
               className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-xs sm:text-sm font-medium shadow-sm transition-all"
